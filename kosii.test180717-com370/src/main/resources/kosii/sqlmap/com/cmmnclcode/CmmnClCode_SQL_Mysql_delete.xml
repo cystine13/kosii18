@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CmmnClCode">
+
+ 	
+	<update id="CmmnClCodeDAO.updateCmmnClCode" parameterClass="kosii.com.cmmnclcode.service.CmmnClCodeVO" >
+<![CDATA[
+/* 
+CmmnClCodeDAO.updateCmmnClCode 
+공통분류코드 수정
+*/
+update comtccmmnclcode set
+	CL_CODE_NM = #clCodeNm#
+where CL_CODE= #clCode#
+
+]]>
+	</update>
+
+ 	
+</sqlMap>

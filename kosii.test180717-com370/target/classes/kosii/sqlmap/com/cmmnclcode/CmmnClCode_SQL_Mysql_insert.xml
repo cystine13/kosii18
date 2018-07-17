@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CmmnClCode">
+
+ 	
+	<insert id="CmmnClCodeDAO.insertCmmnClCode" parameterClass="kosii.com.cmmnclcode.service.CmmnClCodeVO" >
+<![CDATA[
+/* 
+CmmnClCodeDAO.insertCmmnClCode 
+공통분류코드 저장
+*/
+
+insert into comtccmmnclcode (
+	CL_CODE
+	, CL_CODE_NM
+) values (
+	#clCode#
+	, #clCodeNm#
+)
+]]>
+	</insert>
+
+ 	
+</sqlMap>
