@@ -97,7 +97,7 @@
   	</h1>
   </td>
   <td width="10%"class="title_left">
-	<select name="searchCnd" class="select" title="검색조건선택">
+	<select name="searchCnd" class="select form-control" title="검색조건선택">
 		   <option value="0" <c:if test="${searchVO.searchCnd == '0'}">selected="selected"</c:if> >제목</option>
 		   <option value="1" <c:if test="${searchVO.searchCnd == '1'}">selected="selected"</c:if> >내용</option>
 		   <c:if test="${anonymous != 'true'}">
@@ -106,15 +106,15 @@
 	</select>
   </td>
   <td width="35%">
-    <input name="searchWrd" type="text" size="35" value='<c:out value="${searchVO.searchWrd}"/>' maxlength="35" onkeypress="press(event);" title="검색어 입력">
+    <input class="form-control" name="searchWrd" type="text" value='<c:out value="${searchVO.searchWrd}"/>' maxlength="35" onkeypress="press(event);" title="검색어 입력">
   </td>
   <th width="10%">
    <table border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td class="button" nowrap><input type="submit" value="<spring:message code="button.inquire" />" onclick="fn_egov_select_noticeList('1'); return false;" style="height:20px;width:42px;padding:0px 0px 0px 0px;" ></td>
+      <td class="button" nowrap><input type="submit" value="<spring:message code="button.inquire" />" onclick="fn_egov_select_noticeList('1'); return false;" class="btn btn-primary" ></td>
 	  <td>&nbsp;&nbsp;&nbsp;</td>
       <c:if test="${brdMstrVO.authFlag == 'Y'}">
-	      <td class="button" nowrap><a href="<c:url value='/cop/bbs${prefix}/addBoardArticle.do'/>" onClick="javascript:fn_egov_addNotice(); return false;"><spring:message code="button.create" /></a></td>
+	      <td class="button" nowrap><a href="<c:url value='/cop/bbs${prefix}/addBoardArticle.do'/>" onClick="javascript:fn_egov_addNotice(); return false;" class="btn btn-danger"><spring:message code="button.create" /></a></td>
       </c:if>
     </tr>
    </table>
