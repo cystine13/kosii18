@@ -282,7 +282,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000001"><i class="fa fa-dashboard fa-fw"></i> 일반게시판</a>
+                            <a href="${pageContext.request.contextPath}/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000001"><i class="fa fa-dashboard fa-fw"></i> 공지사항</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/EgovPageLink.do?link=kosii18/com/EgovPageLink/NewFile"><i class="fa fa-dashboard fa-fw"></i> 테스트</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/EgovPageLink.do?link=kosii18/com/EgovPageLink/NewFile2"><i class="fa fa-dashboard fa-fw"></i> 테스트2</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/EgovPageLink.do?link=kosii18/com/EgovPageLink/sub1/NewFile"><i class="fa fa-dashboard fa-fw"></i> 서브 테스트1</a>
                         </li>
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
