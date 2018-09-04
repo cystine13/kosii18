@@ -19,12 +19,19 @@
 	</definition>
 
 	<definition name="god/com/main/*" extends="startbootstrap.sb.admin.2.gh.pages">
-		<put-attribute name="body" value="/WEB-INF/jsp/kosii18/com/main/{1}.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/kosii18/com/main/{1}.jsp" />
 	</definition>
 
-	<definition name="egovframework/com/cop/bbs/EgovNotice*" extends="startbootstrap.sb.admin.2.gh.pages">
+	<definition name="egovframework/com/cop/bbs/EgovNotice*"
+		extends="startbootstrap.sb.admin.2.gh.pages">
 		<put-attribute name="body"
 			value="/WEB-INF/jsp/kosii18/com/cop/bbs/EgovNotice{1}.jsp" />
 	</definition>
+
+	<definition name="egovframework/com/uat/uia/EgovLoginUsr"
+		template="/WEB-INF/jsp/kosii18/com/uat/uia/EgovLoginUsr.jsp">
+	</definition>
+
 
 </tiles-definitions>
