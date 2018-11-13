@@ -8,7 +8,7 @@
 			INSERT INTO tb_table
 			(table_id, table_nm, column_nm1, column_nm2, column_nm3, APPLCNT_NM, USE_AT, FRST_REGIST_PNTTM)
 			VALUES
-			( (select ifnull(max(table_id),0)+1 from tb_table t1), #tableNm#, #columnNm1#, #columnNm2#, #columnNm3#, #applcntNm#, #useAt#, SYSDATE())			
+			( (select ifnull(max(cast(table_id as unsigned)),0)+1 from tb_table t1), #tableNm#, #columnNm1#, #columnNm2#, #columnNm3#, #applcntNm#, #useAt#, SYSDATE())			
 		]]>
 	</insert>
 	
@@ -31,9 +31,37 @@ and table_nm = #tableNm#
 and use_At = #useAt#
 ]]>
 </isNotEmpty>
+<isNotEmpty property="columnNm1">
+<![CDATA[
+and column_Nm1 like concat('%', #columnNm1#, '%')
+]]>
+</isNotEmpty>
 <![CDATA[			
-			ORDER BY table_id desc	
+			ORDER BY cast(table_id as unsigned) desc	
  		]]>
- 	</select>	
+ 	</select>
+ 	
+ 	<select id="TableDAO.select" parameterClass="kosii18.com.table.service.TableVO" resultClass="egovframework.rte.psl.dataaccess.util.EgovMap" >
+ 		<![CDATA[
+			SELECT 
+				*
+			FROM
+				tb_table
+			WHERE
+				table_id = #tableId#
+]]>		
+ 	</select>	 
+ 	
+ 	<update id="TableDAO.update">
+ 		update tb_table set column_nm1 = #columnNm1# where table_id = #tableId#
+ 	</update>		
+ 	
+ 	<update id="TableDAO.delete">
+ 		update tb_table set use_at = 'N' where table_id = #tableId#
+ 	</update>
+ 	
+ 	<delete id="TableDAO.delete2">
+ 		delete from tb_table where table_id = #tableId#;
+ 	</delete>
  	
 </sqlMap>
