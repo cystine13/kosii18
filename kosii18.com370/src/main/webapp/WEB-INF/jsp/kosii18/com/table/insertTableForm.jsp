@@ -61,6 +61,7 @@ P.HStyle16, LI.HStyle16, DIV.HStyle16
 
 <input type="submit" value="수정">
 <a href="deleteTable.do?tableId=${select.tableId}" onclick="return btnDelete(this);">삭제</a>			
+<a href="selectTableList.do?pageIndex=${tableVO.pageIndex}&pageUnit=${tableVO.pageUnit}&pageSize=${tableVO.pageSize}" onclick="//return btnDelete(this);">목록</a>			
 
 <script type="text/javascript">
 function btnDelete(_this) {
@@ -82,7 +83,7 @@ function btnDelete(_this) {
 <form action="${pageContext.request.contextPath}/table/insertTable.do" id="insertTable" method="post" name="insertTable">
 <input type="hidden" name="tableNm" value="table1">	
 <input type="submit" value="저장">
-
+<a href="selectTableList.do" onclick="//return btnDelete(this);">목록</a>
 	</c:otherwise>
 </c:choose>
 

@@ -37,9 +37,40 @@ and column_Nm1 like concat('%', #columnNm1#, '%')
 ]]>
 </isNotEmpty>
 <![CDATA[			
-			ORDER BY cast(table_id as unsigned) desc	
+			ORDER BY cast(table_id as unsigned) desc
+			LIMIT #recordCountPerPage# OFFSET #firstIndex#
+				
  		]]>
  	</select>
+ 	
+ 	<select id="TableDAO.selectlistCnt" parameterClass="kosii18.com.table.service.TableVO" 
+ 	resultClass="int" >
+ 		<![CDATA[
+			SELECT 
+				count(*)
+			FROM
+				tb_table
+			WHERE
+				1=1
+]]>		
+<isNotEmpty property="tableNm">
+<![CDATA[
+and table_nm = #tableNm#
+]]>
+</isNotEmpty>		
+<isNotEmpty property="useAt">
+<![CDATA[
+and use_At = #useAt#
+]]>
+</isNotEmpty>
+<isNotEmpty property="columnNm1">
+<![CDATA[
+and column_Nm1 like concat('%', #columnNm1#, '%')
+]]>
+</isNotEmpty>
+<![CDATA[			
+ 		]]>
+ 	</select> 	
  	
  	<select id="TableDAO.select" parameterClass="kosii18.com.table.service.TableVO" resultClass="egovframework.rte.psl.dataaccess.util.EgovMap" >
  		<![CDATA[

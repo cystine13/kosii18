@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kosii18.com.table.service.TableVO;
 import kosii18.com.table.service.impl.TableDAO;
 
@@ -22,13 +24,34 @@ public class TableController {
 	@Resource(name = "TableDAO")
 	private TableDAO tableDAO;
 
+	@Resource(name = "propertiesService")
+	protected EgovPropertyService propertyService;
+
 	@RequestMapping("/table/selectTableList.do")
 	public String selectList(TableVO vo, ModelMap model) throws Exception {
 		LOGGER.debug("목록");
 		vo.setUseAt("Y");
+
+		/* vo.setPageUnit(propertyService.getInt("pageUnit")); */
+		/* vo.setPageSize(propertyService.getInt("pageSize")); */
+
+		PaginationInfo paginationInfo = new PaginationInfo();
+
+		paginationInfo.setCurrentPageNo(vo.getPageIndex());
+		paginationInfo.setRecordCountPerPage(vo.getPageUnit());
+		paginationInfo.setPageSize(vo.getPageSize());
+
+		vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		vo.setLastIndex(paginationInfo.getLastRecordIndex());
+		vo.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
 		// vo.setTableNm("tb1");
 		List<EgovMap> results = tableDAO.selectlist(vo);
+		int totalRecordCount = tableDAO.selectlistCnt(vo);
+
+		paginationInfo.setTotalRecordCount(totalRecordCount);
 		model.addAttribute("results", results);
+		model.addAttribute("paginationInfo", paginationInfo);
 
 		return "kosii18/com/table/selectTableList";
 	}

@@ -20,6 +20,10 @@ public class TableDAO extends EgovComAbstractDAO {
 		return (List<EgovMap>) list("TableDAO.selectlist", vo);
 	}
 
+	public int selectlistCnt(TableVO vo) throws Exception {
+		return (int) select("TableDAO.selectlistCnt", vo);
+	}
+
 	public EgovMap select(TableVO vo) {
 		return (EgovMap) select("TableDAO.select", vo);
 	}
